@@ -1,0 +1,131 @@
+{% extends "firstapp/base.html" %}
+{% block content %}
+
+<div id="content" class="colM">
+
+        <h1>Add user</h1>
+        <div id="content-main">
+
+
+
+<form action="" method="post" id="user_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="ZkWU60BHFXskFSEXqQNMo7Acc9Kb7CB1o9lSp91WdkjKQYYp8Yzy4e7JNy0Nv4Ps">
+
+    <p>First, enter a username and password. Then, you’ll be able to edit more user options.</p>
+
+
+<div>
+
+
+
+
+    <p class="errornote">
+    Please correct the errors below.
+    </p>
+
+
+
+
+
+  <fieldset class="module aligned wide">
+
+
+
+        <div class="form-row errors field-username">
+            <ul class="errorlist"><li>A user with that username already exists.</li></ul>
+
+                <div>
+
+
+                        <label class="required" for="id_username">Username:</label>
+
+                            <input type="text" name="username" value="ujoshi" class="vTextField" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+
+
+
+                        <div class="help">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</div>
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-password1">
+
+
+                <div>
+
+
+                        <label class="required" for="id_password1">Password:</label>
+
+                            <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+
+
+
+                        <div class="help"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></div>
+
+                </div>
+
+        </div>
+
+        <div class="form-row errors field-password2">
+            <ul class="errorlist"><li>The two password fields didn’t match.</li></ul>
+
+                <div>
+
+
+                        <label class="required" for="id_password2">Password confirmation:</label>
+
+                            <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+
+
+
+                        <div class="help">Enter the same password as before, for verification.</div>
+
+                </div>
+
+        </div>
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+
+<input type="submit" value="Save" class="default" name="_save">
+
+
+<input type="submit" value="Save and add another" name="_addanother">
+<input type="submit" value="Save and continue editing" name="_continue">
+
+
+</div>
+
+
+
+    <script type="text/javascript" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js" data-model-name="user">
+    </script>
+
+
+
+
+<script type="text/javascript" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js" data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+
+        <br class="clear">
+    </div>
+
+{% endblock %}

@@ -1,1 +1,64 @@
 {% extends "firstapp/base.html" %}
+{% block content %}
+
+<form name="frm"id="contact-form" role="form" style="margin: 20px 60px 20px 60px;">
+
+   <div class="controls">
+   <h3>Meeting Scheduling </h3>
+       <div class="row">
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label for="form_name">Name</label>
+                   <input id="form_name" type="text" name="name" class="form-control" required="required" data-error="Firstname is required.">
+               </div>
+           </div>
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label for="form_email">Email</label>
+                   <input id="form_email" type="email" name="mail" class="form-control" required="required" >
+               </div>
+           </div>
+       </div>
+       <div class="row">
+
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label for="form_address">Address</label>
+                   <input id="form_company" type="text" name="address" class="form-control" required="required" >
+               </div>
+           </div>
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label for="form_no">Phone No.</label>
+                   <input id="form_no" type="tel" name="pno" class="form-control"  required="required" pattern="[0-9]{10}">
+               </div>
+           </div>
+       </div>
+     <div class="row">
+
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label for="inputState">Host Name</label>
+                      <select id="inputState" class="form-control">
+                          <option selected>Choose...</option>
+                          <option>...</option>
+                      </select>
+               </div>
+           </div>
+           <div class="col-md-6">
+               <div class="form-group">
+                   <label for="validationDefault04">Time Slot</label>
+                    <select class="custom-select" id="validationDefault04" required>
+                          <option selected disabled value="">Choose...</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                    </select>
+               </div>
+           </div>
+     </div>
+   </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+{% endblock %}

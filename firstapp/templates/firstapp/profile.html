@@ -1,0 +1,46 @@
+{% extends "firstapp/base.html" %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    <div class="jumbotron" style="text-align: justify; margin:150px 400px 200px 400px">
+
+        <ul style="font-size: 2rem; list-style-type:none; ">
+            <li>
+                <a class="nav-link active" href="{% url 'fix' %}" >Fix a Meeting</a>
+            </li>
+            <li>
+                <a class="nav-link active " href="#" >Meeting Schedule </a>
+            </li>
+            <li>
+                <a class="nav-link active" href="{% url 'emdata' %}" >Employee Database</a>
+            </li>
+            <li>
+                <a class="nav-link active" href="{% url 'add_employer'%}" >Add Employer</a>
+            </li>
+        </ul>
+    </div>
+{% else %}
+<div class="jumbotron" style="text-align: justify; margin:150px 400px 200px 400px">
+
+    <ul style="font-size: 2rem; list-style-type:none; ">
+        <li>
+            <a class="nav-link active" href="#" >Update Free Slot</a>
+        </li>
+        <li>
+            <a class="nav-link active " href="#" >Meeting Schedule </a>
+        </li>
+        <li>
+            <a class="nav-link active" href="#" >Update your Profile</a>
+        </li>
+        <li>
+            <a class="nav-link active" href="#" >Employee Database</a>
+        </li>
+{% endif %}
+
+
+
+
+
+
+{% endblock %}
