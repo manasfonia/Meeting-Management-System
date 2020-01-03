@@ -1,0 +1,26 @@
+{% extends "firstapp/base.html" %}
+{% block content %}
+
+<h1 style="text-align: center; margin: 15px 15px 15px 15px;">Meeting Schedule Database</h1>
+<div class = "data" style="margin: 15px 15px 15pxpx 15px;">
+<div class="row">
+        <div class="col"><p><b>Name</b></p></div>
+        <div class="col"><p><b>Address</b></p></div>
+        <div class="col"><p><b>Phone</b></p></div>
+        <div class="col"><p><b>Email</b></p></div>
+        <div class="col"><p><b>Host name</b></p></div>
+        <div class="col"><p><b>Time</b></p></div>
+    </div>
+
+{% for sch in sch_details %}
+    <div class="row">
+        <div class="col"><p>{{sch.name}}</p></div>
+        <div class="col"><p>{{sch.address}}</p></div>
+        <div class="col"><p>{{sch.phone}}</p></div>
+        <div class="col"><p>{{sch.email}}</p></div>
+        <div class="col"><p>{{sch.host}}</p></div>
+        <div class="col"><p></p></div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

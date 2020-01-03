@@ -1,12 +1,11 @@
 {% extends "firstapp/base.html" %}
 {% block content %}
 
-
 <form style="margin: 20px 60px 20px 60px;" method="POST" autocomplete="off">
     {%csrf_token%}
-    <h2>CREDENTIAL REGISTRATION</h2>
-    {{ registration1_form.as_p  }}
-    <input type="submit" class="btn btn-primary" value="Add">
+    <h2>INFORMATION REGISTRATION</h2>
+    {{ registration2_form.as_p  }}
+    <input type="submit" class="btn btn-primary" value="Register">
 
 </form>
 {% endblock %}

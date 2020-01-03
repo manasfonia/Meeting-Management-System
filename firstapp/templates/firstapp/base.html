@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,14 +15,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
 
-<!--    <link rel="stylesheet" href="static/css/firstapp.css">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/firstapp.css' %}">
 
-    <style>
-        body{
-         font-family: 'Slabo 27px', serif;
-        }
-
-    </style>
 
 </head>
 <body>
@@ -34,20 +29,23 @@
     <a class="navbar-brand" href="#">XYZ SOLUTIONS </a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'profile' %}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">My Info</a>
+        {% if user.is_superuser %}
+        {% else %}
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user_edit' %}">My Info</a>
       </li>
+        {% endif %}
       <li class="nav-item active">
-        <a class="nav-link " href="#">Schedule</a>
+        <a class="nav-link " href="{% url 'meetings' %}">Schedule</a>
       </li>
     </ul>
      </ul>
 
       <ul class="form-inline navbar-nav  mt-2 mt-lg-0 ">
           <li class ="nav-item ">
-          <a class="nav-link " href="#" >Log out</a>
+          <a class="nav-link " href="{% url 'logout' %}" >Log out</a>
         </li>
 
         <li>

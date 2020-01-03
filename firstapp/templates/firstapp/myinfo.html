@@ -1,0 +1,11 @@
+{% extends "firstapp/base.html" %}
+{% block content %}
+
+<form style="margin: 20px 60px 20px 60px;" method="POST" autocomplete="off">
+      {%csrf_token%}
+     {{ registration1_form.as_p  }}
+     {{ registration2_form.as_p  }}
+    <input type="submit" value="Edit">
+
+
+{% endblock %}

@@ -1,10 +1,33 @@
 {% extends "firstapp/base.html" %}
 {% block content %}
 
-<p>{{designation}}</p>
-<p>{{user}}</p>
-<p>{{phone}}</p>
+<h1 style="text-align: center; margin: 15px 15px 15px 15px;">Employee Database</h1>
+<div class = "data" style="margin: 15px 15px 0px 15px;">
+<div class="row">
+        <div class="col"><p><b>Name</b></p></div>
+        <div class="col"><p><b>Designation</b></p></div>
+        <div class="col"><p><b>Phone</b></p></div>
+        <div class="col"><p><b>Email</b></p></div>
+        <div class="col"><p><b>Office Address</b></p></div>
+    {% if user.is_superuser %}
+    <div class="col"><p><b></b></p></div>
+    {% endif %}
+    </div>
 
 
-
+{% for emp in all_emp_details %}
+    <div class="row">
+        <div class="col"><p>{{emp.user.get_full_name}}</p></div>
+        <div class="col"><p>{{emp.designation}}</p></div>
+        <div class="col"><p>{{emp.phone}}</p></div>
+        <div class="col"><p>{{emp.user.email}}</p></div>
+        <div class="col"><p>{{emp.office_address}}</p></div>
+     {% if user.is_superuser %}
+        <div class="col"><a href="{% url 'update' emp.user %}" class="btn text secondary px-0"><i class="material-icons">edit</i></a>
+            <a href="{% url 'delete' emp.user %}" class="btn text secondary px-0 delete-btn"><i class="far fa-edit fa-lg"></i>delete</a>
+        </div>
+    {% endif %}
+      </div>
+    {% endfor %}
+</div>
 {% endblock %}

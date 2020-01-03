@@ -9,15 +9,22 @@ class EmployeeInfo(models.Model):
     designation = models.CharField(max_length=150)
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     office_address = models.CharField(max_length=255)
-
     def __str__(self):
-        return self.designation
+        return self.user.get_full_name()
 
 class VisitorInfo(models.Model):
-    date_time = models.DateTimeField(default=timezone)
     name = models.CharField(max_length=150)
     address = models.CharField(max_length=255)
-    phone = models.CharField(max_length=12)
-    email_id = models.EmailField()
-    checkout = models.DateTimeField()
-    time_slot = models.DateTimeField()
+    phone = PhoneNumberField(null=False, blank=False)
+    email = models.EmailField()
+    host = models.ForeignKey(EmployeeInfo, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True, blank=False)
+    # checkout = models.DateTimeField()
+    # time_slot = models.DateTimeField()
+
+    def __str__(self):
+        return self.name
+
+    def publish(self):
+        self.date_time = timezone.now()
+        self.save()
