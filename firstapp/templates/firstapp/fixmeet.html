@@ -1,7 +1,7 @@
 {% extends "firstapp/base.html" %}
 {% block content %}
 
-<form style="margin: 20px 60px 20px 60px;" method="POST" autocomplete="off">
+<form style="margin: 20px 60px 20px 60px;" method="POST" autocomplete="off" name="frm">
       {%csrf_token%}
     <h2>MEETING SCHEDULING</h2>
 
@@ -18,9 +18,35 @@
         <div class="col col-md-6"><label>Email</label>{{ form.email }}</div>
         <div class="col col-md-6"><label>Host Name</label>{{ form.host }}</div>
     </div>
+
+    <div id="upcoming-meetings">
+
+    </div>
+
+    <div class="row ">
+        <div class="col col-md-6"><label>Start Time</label>
+           <div class="input-group date " id="datetimepicker7" data-target-input="nearest">
+
+               {{ form.start_time }}
+               <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
+                   <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+            </div>
+
+        <div class="col col-md-6"><label>End Time</label>
+            <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                {{ form.end_time }}
+                <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
     <input type="submit" class="btn btn-primary" value="Save">
 
 </form>
 
 {% endblock %}
+

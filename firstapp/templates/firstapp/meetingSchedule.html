@@ -2,29 +2,46 @@
 {% block content %}
 
 <h1 style="text-align: center; margin: 15px 15px 15px 15px;">Meeting Schedule Database</h1>
+
+ <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" style="color: black;" href="#">Past Meetings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color: black;">|</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" style="color: black;" href="#">Upcoming Meetings</a>
+  </li>
+</ul>
+
+
 <div class = "data" style="margin: 15px 15px 0px 15px;">
 <div class="row">
-        <div class="col"><p><b>Timestamp</b></p></div>
         <div class="col"><p><b>Name</b></p></div>
         <div class="col"><p><b>Address</b></p></div>
         <div class="col"><p><b>Phone</b></p></div>
         <div class="col"><p><b>Email</b></p></div>
         <div class="col"><p><b>Host name</b></p></div>
-        <div class="col"><p><b></b></p></div>
+        <div class="col"><p><b>Meeting Slot </b></p></div>
+        <div class="col"><p><b> </b></p></div>
     </div>
 
 
 {% for sch in all_sch_details %}
     <div class="row">
-        <div class="col"><p>{{sch.timestamp}}</p></div>
         <div class="col"><p>{{sch.name}}</p></div>
         <div class="col"><p>{{sch.address}}</p></div>
         <div class="col"><p>{{sch.phone}}</p></div>
         <div class="col"><p>{{sch.email}}</p></div>
         <div class="col"><p>{{sch.host}}</p></div>
-         <div class="col"><a href="{% url 'edit_visitor' sch.id %}" class="btn text secondary px-0"><i class="material-icons">edit</i></a>
-            <a href="{% url 'delete_visitor' sch.id %}" class="btn text secondary px-0"><i class="far fa-edit fa-lg"></i>delete</a></div></div>
-    </div>
+        <div class="col"><p>{{sch.start_time}}-{{sch.end_time}}</p></div>
+         <div class="col">
+             {% if user.is_superuser %}
+             <a href="{% url 'edit_visitor' sch.id %}" class="btn text secondary px-0"><i class="material-icons">edit</i></a>
+             <a href="{% url 'delete_visitor' sch.id %}" class="btn text secondary px-0"><i class="far fa-edit fa-lg"></i>delete</a></div></div>
+            {% endif %}
+</div>
 
 {% endfor %}
 </div>

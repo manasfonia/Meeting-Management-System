@@ -3,15 +3,7 @@
 
 <form style="margin: 20px 60px 20px 60px;" method="POST" autocomplete="off">
       {%csrf_token%}
-      <label>First Name </label>
-    {{ registration1_form.first_name }}
-     <label>Last Name </label>
-    {{ registration1_form.last_name }}
-     <label>Email </label>
-    {{ registration1_form.email }}
-     <label>username </label>
-    {{ registration1_form.username }}
-
+    {{ registration0_form.as_p }}
     <br>
       {{ registration2_form.as_p  }}
     <input type="submit" class="btn btn-primary" value="Edit">

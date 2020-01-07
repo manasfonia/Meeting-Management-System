@@ -6,6 +6,7 @@ urlpatterns = [
             path('', LoginView.as_view(), name='login'),
             path('logout/', views.logout, name='logout'),
             path('base/', views.DisplayView, name='base'),
+            path('accounts/profile/getdata/<int:pk>', views.TimeOccupied, name='upcoming'),
             path('accounts/profile/fix/', views.FixView, name='fix'),
             path('accounts/profile/', views.ProfileView, name='profile'),
             path('accounts/profile/add', views.AddEmployer, name='add'),
@@ -18,5 +19,6 @@ urlpatterns = [
             path('accounts/profile/meetings', views.ScheduleView, name='meetings'),
             path('accounts/profile/meet', views.UserMeeting, name='meet'),
             path('accounts/profile/info', views.UserUpdate, name='user_edit'),
+
 
        ]

@@ -19,8 +19,9 @@ class VisitorInfo(models.Model):
     email = models.EmailField()
     host = models.ForeignKey(EmployeeInfo, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True, blank=False)
-    # checkout = models.DateTimeField()
-    # time_slot = models.DateTimeField()
+    checkout = models.DateTimeField(blank=True, null=True)
+    start_time = models.DateTimeField(blank=False)
+    end_time = models.DateTimeField(blank=False)
 
     def __str__(self):
         return self.name
@@ -28,3 +29,4 @@ class VisitorInfo(models.Model):
     def publish(self):
         self.date_time = timezone.now()
         self.save()
+
