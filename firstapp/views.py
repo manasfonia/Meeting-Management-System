@@ -2,9 +2,10 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import json
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from django.utils.datetime_safe import datetime
 
 from .forms import RegistrationForm1, RegistrationForm2, VisitorForm, RegistrationForm0
 from .models import EmployeeInfo, VisitorInfo
@@ -50,6 +51,15 @@ def DeleteVisitor(request, pk):
         vis.delete()
     return redirect('meetings')
 
+@login_required(login_url="/")
+def CheckoutMeeting(request, pk):
+    obj = VisitorInfo.objects.get(id=pk)
+    if obj.checkout:
+        return redirect('meetings')
+    else:
+        obj.checkout = datetime.now()
+        obj.save()
+        return redirect('meetings')
 
 @login_required(login_url="/")
 def UpdateVisitor(request, pk):
@@ -81,20 +91,25 @@ def UserMeeting(request):
 @login_required(login_url="/")
 def FixView(request):
     form = VisitorForm(request.POST or None)
-
-    if form.is_valid():
-        form.save()
-        return redirect('profile')
-
-    context = {
+    if request.method == 'GET':
+        context = {
         'form': form
-    }
-    return render(request, "fixmeet.html", context=context)
+        }
+        return render(request, "fixmeet.html", context=context)
+    else:
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+        else:
+            print("Form invalid", form.errors)
+            return HttpResponse(form.errors)
+
 
 
 @login_required(login_url="/")
 def AddEmployer(request):
     registration1_form = RegistrationForm1(request.POST or None)
+
     if registration1_form.is_valid():
         registration1 = registration1_form.save()
 
@@ -125,7 +140,7 @@ def RegisterEmployer(request, username):
 
 @login_required(login_url="/")
 def DeleteEmployee(request, username):
-    emp = EmployeeInfo.objects.filter(user__username=username).first()
+    emp = User.objects.filter(username=username).first()
     if emp:
         emp.delete()
     return redirect('emdata')

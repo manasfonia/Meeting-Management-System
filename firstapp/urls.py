@@ -14,6 +14,7 @@ urlpatterns = [
             path('accounts/profile/employdata', views.EmView, name='emdata'),
             path('accounts/profile/employdata/delete/<slug:username>/', views.DeleteEmployee, name='delete'),
             path('accounts/profile/employdata/update/<slug:username>/', views.UpdateEmployee, name='update'),
+            path('accounts/profile/meetings/checkout/<int:pk>/', views.CheckoutMeeting, name='checkout'),
             path('accounts/profile/meetings/delete/<int:pk>/', views.DeleteVisitor, name='delete_visitor'),
             path('accounts/profile/meetings/update/<int:pk>/', views.UpdateVisitor, name='edit_visitor'),
             path('accounts/profile/meetings', views.ScheduleView, name='meetings'),

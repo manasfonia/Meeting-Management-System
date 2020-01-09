@@ -7,7 +7,7 @@ class EmployeeInfoAdmin(admin.ModelAdmin):
     list_display = ['user', 'designation', 'phone', 'office_address']
 
 class VisitorInfoAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'phone', 'address', 'host', 'timestamp']
+    list_display = ['name', 'email', 'phone', 'address', 'host', 'timestamp', 'checkout']
 
 
 admin.site.register(EmployeeInfo, EmployeeInfoAdmin)
